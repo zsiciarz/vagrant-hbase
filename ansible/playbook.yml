@@ -1,6 +1,8 @@
 ---
 - hosts: vagrant
   sudo: yes
+  vars:
+    - hbase_release: hbase-0.94.9.tar.gz
   tasks:
     - name: install essential Python packages
       apt: pkg=$item state=present
@@ -21,3 +23,7 @@
         - oracle-java7-set-default
     - name: fix /etc/hosts
       lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1\s+(.*)$' line='127.0.0.1 \\1' backrefs=yes state=present
+    - name: download HBase release
+      get_url: url=http://ftp.ps.pl/pub/apache/hbase/stable/$hbase_release dest=/home/vagrant/$hbase_release
+    - name: extract HBase archive
+      command: tar xzvf /home/vagrant/$hbase_release
