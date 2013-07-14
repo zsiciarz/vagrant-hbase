@@ -2,5 +2,10 @@
 - hosts: vagrant
   sudo: yes
   tasks:
-    - name: Display system version information
-      command: uname -a
+    - name: ensure recent package list
+      apt: update_cache=yes
+    - name: install essential Python packages
+      apt: pkg=$item state=present
+      with_items:
+        - python-pip
+        - python-virtualenv
