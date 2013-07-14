@@ -9,3 +9,6 @@
       with_items:
         - python-pip
         - python-virtualenv
+        - python-software-properties
+    - name: add Java PPA
+      apt_repository: repo=ppa:webupd8team/java state=present
