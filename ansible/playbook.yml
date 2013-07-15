@@ -2,12 +2,14 @@
 - hosts: vagrant
   connection: ssh
   sudo: yes
+
   vars:
     - hbase_release: hbase-0.94.9
     - hbase_archive: '{{ hbase_release }}.tar.gz'
-    - hbase_home_dir: /home/vagrant/hbase/
-    - hbase_data_dir: /data/hbase/
-    - zookeeper_data_dir: /data/zk/
+    - hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
+    - hbase_data_dir: /data/hbase
+    - zookeeper_data_dir: /data/zk
+
   tasks:
     - name: install essential Python packages
       apt: pkg=$item state=present
@@ -46,3 +48,6 @@
 
     - name: extract HBase archive
       command: tar xzf /home/vagrant/$hbase_archive --overwrite --overwrite-dir
+
+    - name: write HBase config file
+      template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
