@@ -47,7 +47,7 @@
         - $zookeeper_data_dir
 
     - name: extract HBase archive
-      command: tar xzf /home/vagrant/$hbase_archive --overwrite --overwrite-dir
+      command: tar xzf /home/vagrant/$hbase_archive creates='{{ hbase_home_dir }}'
 
     - name: write HBase config file
       template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
