@@ -1,5 +1,6 @@
 ---
 - hosts: vagrant
+  connection: ssh
   sudo: yes
   vars:
     - hbase_release: hbase-0.94.9.tar.gz
