@@ -52,5 +52,8 @@
     - name: write HBase config file
       template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
 
+    - name: set JAVA_HOME environment variable
+      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh' regexp='^# export JAVA_HOME=(.*)$' line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre' state=present
+
     - name: start HBase
       command: '{{ hbase_home_dir }}/bin/start-hbase.sh'
