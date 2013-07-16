@@ -42,7 +42,6 @@
     - name: create HBase-related directories
       file: path='{{ item }}' state=directory
       with_items:
-        - '{{ hbase_home_dir }}'
         - '{{ hbase_data_dir }}'
         - '{{ zookeeper_data_dir }}'
 
