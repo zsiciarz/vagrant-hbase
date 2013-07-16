@@ -12,7 +12,7 @@
 
   tasks:
     - name: install essential Python packages
-      apt: pkg=$item state=present
+      apt: pkg='{{ item }}' state=present
       with_items:
         - python-pip
         - python-virtualenv
@@ -28,7 +28,7 @@
       shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 
     - name: install Java 7
-      apt: pkg=$item state=present
+      apt: pkg='{{ item }}' state=present
       with_items:
         - oracle-java7-installer
         - oracle-java7-set-default
@@ -37,17 +37,17 @@
       lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1\s+(.*)$' line='127.0.0.1 \1' backrefs=yes state=present
 
     - name: download HBase release {{ hbase_release }}
-      get_url: url=http://ftp.ps.pl/pub/apache/hbase/stable/$hbase_archive dest=/home/vagrant/$hbase_archive
+      get_url: url='http://ftp.ps.pl/pub/apache/hbase/stable/{{ hbase_archive }}' dest='/home/vagrant/{{ hbase_archive }}'
 
     - name: create HBase-related directories
-      file: path=$item state=directory
+      file: path='{{ item }}' state=directory
       with_items:
-        - $hbase_home_dir
-        - $hbase_data_dir
-        - $zookeeper_data_dir
+        - '{{ hbase_home_dir }}'
+        - '{{ hbase_data_dir }}'
+        - '{{ zookeeper_data_dir }}'
 
     - name: extract HBase archive
-      command: tar xzf /home/vagrant/$hbase_archive creates='{{ hbase_home_dir }}'
+      command: tar xzf '/home/vagrant/{{ hbase_archive }}' creates='{{ hbase_home_dir }}'
 
     - name: write HBase config file
       template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
