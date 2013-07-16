@@ -51,3 +51,6 @@
 
     - name: write HBase config file
       template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
+
+    - name: start HBase
+      command: '{{ hbase_home_dir/bin/start-hbase.sh }}'
