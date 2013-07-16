@@ -22,6 +22,10 @@ Getting started
 3. ????
 4. PROFIT!
 
+**Note:** Ansible < 1.2 may not work due to some bugs in parsing Jinja2 syntax
+in playbooks. Ubuntu 13.04 has only Ansible 1.1 in repositories, therefore
+it's best to use `sudo pip install ansible` to get a more recent version.
+
 What's in the box?
 ------------------
 
