@@ -24,14 +24,11 @@
     - name: add Java PPA
       apt_repository: repo=ppa:webupd8team/java state=present
 
-    - name: update APT cache again with new PPA added
-      apt: update_cache=yes
-
     - name: automatically accept Java license
       shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 
     - name: install Java 7
-      apt: pkg='{{ item }}' state=present
+      apt: pkg='{{ item }}' state=present update_cache=yes
       with_items:
         - oracle-java7-installer
         - oracle-java7-set-default
