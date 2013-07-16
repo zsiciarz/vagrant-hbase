@@ -18,6 +18,6 @@ Getting started
 ---------------
 
 1. install Ansible on your host machine
-2. git clone https://github.com/zsiciarz/vagrant-hbase.git && cd vagrant-hbase && vagrant up
+2. `git clone https://github.com/zsiciarz/vagrant-hbase.git && cd vagrant-hbase && vagrant up`
 3. ????
 4. PROFIT!
