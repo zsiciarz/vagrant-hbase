@@ -32,3 +32,5 @@ What's in the box?
 This Vagrantfile sets up a single HBase node in standalone mode (using local file system, not HDFS).
 Master web UI is available from the host machine at http://127.0.0.1:60110,
 RegionServer web UI at http://127.0.0.1:60130.
+
+A Jython interpreter is also installed.
