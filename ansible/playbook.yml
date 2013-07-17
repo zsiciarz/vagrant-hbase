@@ -32,6 +32,7 @@
       with_items:
         - oracle-java7-installer
         - oracle-java7-set-default
+        - jython
 
     - name: fix /etc/hosts
       lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1\s+(.*)$' line='127.0.0.1 \1' backrefs=yes state=present
