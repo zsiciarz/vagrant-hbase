@@ -34,3 +34,22 @@ Master web UI is available from the host machine at http://127.0.0.1:60110,
 RegionServer web UI at http://127.0.0.1:60130.
 
 A Jython interpreter is also installed.
+
+Initial data
+------------
+
+The `create_test_table.rb` file can be loaded into HBase shell to define
+a dead simple test table with one column family `cf`. The table looks like this:
+
+    +--------+-----------+
+    | rowkey |  cf:col1  |
+    +--------+-----------+
+    |  row1  |   value1  |
+    +--------+-----------+
+
+To load the data, execute:
+
+    vagrant ssh
+    cd hbase-0.94.9/
+    ./bin/hbase shell /vagrant/create_test_table.rb
+
