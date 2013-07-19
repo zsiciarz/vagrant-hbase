@@ -33,8 +33,6 @@ This Vagrantfile sets up a single HBase node in standalone mode (using local fil
 Master web UI is available from the host machine at http://127.0.0.1:60110,
 RegionServer web UI at http://127.0.0.1:60130.
 
-A Jython interpreter is also installed.
-
 Initial data
 ------------
 
@@ -52,4 +50,20 @@ To load the data, execute:
     vagrant ssh
     cd hbase-0.94.9/
     ./bin/hbase shell /vagrant/create_test_table.rb
+
+Jython
+------
+
+A Jython interpreter is also installed in the VM. To access Java HBase API
+from Jython, you need to set the CLASSPATH environment variable correctly.
+HBase CLI tool can help in that matter.
+
+    vagrant ssh
+    cd hbase-0.94.9/
+    export CLASSPATH=`./bin/hbase classpath`
+    jython
+
+This should drop you into Jython REPL where you can import Java classes
+and use them in a more Pythonic way. An example script that reads the data
+loaded with `create_test_table.rb` is at `/vagrant/test.py`.
 
