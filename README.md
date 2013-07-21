@@ -3,16 +3,16 @@ vagrant-hbase
 
 Vagrantfile for quick-and-dirty HBase setup.
 
-System
-------
+Overview
+--------
 
-Ubuntu 12.04 LTS (precise)
+This Vagrant project sets up a Ubuntu 12.04 (precise) virtual machine and
+provisions it for HBase development. [Ansible](http://www.ansibleworks.com/)
+is used for VM provisioning.
 
-Provisioning
-------------
-
-This vagrant setup uses [Ansible](http://www.ansibleworks.com/) for VM
-provisioning.
+After running `vagrant up`, a single HBase node is set up in standalone mode
+(using local file system, not HDFS). A Thrift server is also running,
+allowing access from languages outside of the JVM.
 
 Getting started
 ---------------
@@ -26,12 +26,16 @@ Getting started
 in playbooks. Ubuntu 13.04 has only Ansible 1.1 in repositories, therefore
 it's best to use `sudo pip install ansible` to get a more recent version.
 
-What's in the box?
-------------------
+Network and ports
+-----------------
 
-This Vagrantfile sets up a single HBase node in standalone mode (using local file system, not HDFS).
-Master web UI is available from the host machine at http://127.0.0.1:60110,
-RegionServer web UI at http://127.0.0.1:60130.
+The guest machine has a private IP address 192.168.15.166. HBase-related
+ports are forwarded according to the following rule:
+
+    hostPortNumber = guestPortNumber + 100
+
+For example, HBase web UIs are available from the host machine at
+http://127.0.0.1:60110 (Master) and http://127.0.0.1:60130 (RegionServer).
 
 Initial data
 ------------
