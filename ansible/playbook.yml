@@ -58,3 +58,6 @@
 
     - name: start HBase
       command: '{{ hbase_home_dir }}/bin/start-hbase.sh'
+
+    - name: start Thrift server
+      shell: '{{ hbase_home_dir }}/bin/hbase-daemon.sh start thrift'
