@@ -12,6 +12,8 @@ Vagrant.configure("2") do |config|
   # HBase web UI ports
   config.vm.network :forwarded_port, guest: 60010, host: 60110
   config.vm.network :forwarded_port, guest: 60030, host: 60130
+  # Thrift
+  config.vm.network :forwarded_port, guest: 9090, host: 9190
 
   config.ssh.forward_agent = true
 
