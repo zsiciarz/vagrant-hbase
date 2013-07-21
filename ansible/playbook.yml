@@ -22,6 +22,12 @@
         - python-software-properties
         - python-dev
 
+    - name: install Python client libraries for Thrift and HBase
+      pip: name='{{ item }}' state=present
+      with_items:
+        - thrift
+        - happybase
+
     - name: add Java PPA
       apt_repository: repo=ppa:webupd8team/java state=present
 
