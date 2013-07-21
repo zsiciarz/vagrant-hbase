@@ -71,3 +71,27 @@ This should drop you into Jython REPL where you can import Java classes
 and use them in a more Pythonic way. An example script that reads the data
 loaded with `create_test_table.rb` is at `/vagrant/test.py`.
 
+Python and happybase
+--------------------
+
+An alternative approach to access HBase from Python is to use a regular
+(CPython) interpreter and Thrift bindings. A Python library called
+[happybase](https://pypi.python.org/pypi/happybase/) hides away all the
+necessary plumbing behind a simple, clean interface to your data. For
+your convenience, this package is installed into system-wide Python libraries
+when provisioning the guest machine.
+
+An example Python session on the guest machine may look like this (assuming
+initial data were loaded):
+
+    vagrant@vagrant-hbase:~$ python
+    Python 2.7.3 (default, Apr 10 2013, 05:46:21)
+    [GCC 4.6.3] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import happybase
+    >>> conn = happybase.Connection()
+    >>> print conn.tables()
+    ['test']
+    >>> table = conn.table('test')
+    >>> print table.row('row1')
+    {'cf:col1': 'value1'}
