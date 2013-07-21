@@ -49,7 +49,7 @@ To load the data, execute:
 
     vagrant ssh
     cd hbase-0.94.9/
-    ./bin/hbase shell /vagrant/create_test_table.rb
+    ./bin/hbase shell /vagrant/data/create_test_table.rb
 
 Jython
 ------
