@@ -71,7 +71,7 @@ This should drop you into Jython REPL where you can import Java classes
 and use them in a more Pythonic way. An example script that reads the data
 loaded with `create_test_table.rb` is at `/vagrant/test.py`.
 
-Python and happybase
+Python and HappyBase
 --------------------
 
 An alternative approach to access HBase from Python is to use a regular
