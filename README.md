@@ -76,7 +76,7 @@ Python and happybase
 
 An alternative approach to access HBase from Python is to use a regular
 (CPython) interpreter and Thrift bindings. A Python library called
-[happybase](https://pypi.python.org/pypi/happybase/) hides away all the
+[HappyBase](https://pypi.python.org/pypi/happybase/) hides away all the
 necessary plumbing behind a simple, clean interface to your data. For
 your convenience, this package is installed into system-wide Python libraries
 when provisioning the guest machine.
