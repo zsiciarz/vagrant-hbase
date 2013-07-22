@@ -95,3 +95,9 @@ initial data were loaded):
     >>> table = conn.table('test')
     >>> print table.row('row1')
     {'cf:col1': 'value1'}
+
+License
+-------
+
+This work is released under the MIT license. A copy of the license is provided
+in the LICENSE file.
