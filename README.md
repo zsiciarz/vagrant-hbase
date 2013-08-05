@@ -34,7 +34,7 @@ ports are forwarded according to the following rule:
 
     hostPortNumber = guestPortNumber + 100
 
-For example, HBase web UIs are available from the host machine at
+For example, HBase web UIs are available from the *host* machine at
 http://127.0.0.1:60110 (Master) and http://127.0.0.1:60130 (RegionServer).
 
 Initial data
@@ -59,7 +59,7 @@ Jython
 ------
 
 A Jython interpreter is also installed in the VM. To access Java HBase API
-from Jython, you need to set the CLASSPATH environment variable correctly.
+from Jython, you need to set the `CLASSPATH` environment variable correctly.
 HBase CLI tool can help in that matter.
 
     vagrant ssh
