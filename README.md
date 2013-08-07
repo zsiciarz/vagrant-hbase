@@ -96,6 +96,11 @@ initial data were loaded):
     >>> print table.row('row1')
     {'cf:col1': 'value1'}
 
+Author
+------
+
+ * Zbigniew Siciarz (zbigniew at siciarz dot net)
+
 License
 -------
 
