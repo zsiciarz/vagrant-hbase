@@ -52,7 +52,7 @@ a dead simple test table with one column family `cf`. The table looks like this:
 To load the data, execute:
 
     vagrant ssh
-    cd hbase-0.94.9/
+    cd hbase-0.94.11/
     ./bin/hbase shell /vagrant/data/create_test_table.rb
 
 Jython
@@ -63,7 +63,7 @@ from Jython, you need to set the `CLASSPATH` environment variable correctly.
 HBase CLI tool can help in that matter.
 
     vagrant ssh
-    cd hbase-0.94.9/
+    cd hbase-0.94.11/
     export CLASSPATH=`./bin/hbase classpath`
     jython
 
