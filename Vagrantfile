@@ -9,6 +9,10 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "vagrant-hbase"
 
   config.vm.network :private_network, ip: "192.168.15.166"
+  # Hadoop web UI ports
+  config.vm.network :forwarded_port, guest: 50070, host: 50170
+  config.vm.network :forwarded_port, guest: 50075, host: 50175
+  config.vm.network :forwarded_port, guest: 50090, host: 50190
   # HBase web UI ports
   config.vm.network :forwarded_port, guest: 60010, host: 60110
   config.vm.network :forwarded_port, guest: 60030, host: 60130
