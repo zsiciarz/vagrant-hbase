@@ -7,6 +7,8 @@
     - hadoop_release: hadoop-1.2.1
     - hadoop_archive: '{{ hadoop_release }}.tar.gz'
     - hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
+    - hadoop_tmp_dir: '/data/hadoop'
+    - hadoop_fs_default_name: 'hdfs://localhost:54310'
     - hbase_release: hbase-0.94.9
     - hbase_archive: '{{ hbase_release }}.tar.gz'
     - hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
@@ -60,6 +62,12 @@
 
     - name: set additional JVM options for Hadoop
       lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh' regexp='^#?\s*export HADOOP_OPTS=(.*)$' line='export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true' state=present
+
+    - name: write Hadoop core config file
+      template: src=templates/hadoop-core-site.xml.j2 dest='{{ hadoop_home_dir }}/conf/core-site.xml'
+
+    - name: write Hadoop HDFS config file
+      template: src=templates/hadoop-hdfs-site.xml.j2 dest='{{ hadoop_home_dir }}/conf/hdfs-site.xml'
 
     ### HBase
 
