@@ -93,6 +93,9 @@
     - name: format the Hadoop filesystem
       command: creates='{{ hadoop_tmp_dir }}' '{{ hadoop_home_dir }}/bin/hadoop' namenode -format
 
+    - name: start Hadoop DFS daemons
+      command: '{{ hadoop_home_dir }}/bin/start-dfs.sh'
+
     ### HBase
 
     - name: download HBase release {{ hbase_release }}
