@@ -37,6 +37,16 @@ ports are forwarded according to the following rule:
 For example, HBase web UIs are available from the *host* machine at
 http://127.0.0.1:60110 (Master) and http://127.0.0.1:60130 (RegionServer).
 
+Hadoop
+------
+
+If the following commands work, Hadoop is successfully running.
+
+    vagrant ssh
+    cd hadoop-1.2.1/
+    echo 'Hello world!' | ./bin/hadoop fs -put - hello.txt
+    ./bin/hadoop fs -cat /user/vagrant/hello.txt
+
 Initial data
 ------------
 
