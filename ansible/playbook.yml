@@ -4,6 +4,7 @@
   user: vagrant
 
   vars:
+    - ssh_key: /home/vagrant/.ssh/id_rsa
     - hadoop_release: hadoop-1.2.1
     - hadoop_archive: '{{ hadoop_release }}.tar.gz'
     - hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
@@ -59,6 +60,15 @@
     - name: create base data directory
       file: path=/data state=directory owner=vagrant group=vagrant mode=0755 recurse=yes
       sudo: yes
+
+    - name: create SSH config
+      template: src=templates/ssh-config.j2 dest=/home/vagrant/.ssh/config
+
+    - name: create SSH key pair for Hadoop
+      command: creates='{{ ssh_key }}.pub' ssh-keygen -t rsa -N "" -C "for Hadoop" -f '{{ ssh_key }}'
+
+    - name: add generated key to authorized_keys
+      shell: 'if grep -q Hadoop /home/vagrant/.ssh/authorized_keys; then echo "public key already added"; else cat {{ ssh_key }}.pub >> /home/vagrant/.ssh/authorized_keys; fi'
 
     ### Hadoop
 
