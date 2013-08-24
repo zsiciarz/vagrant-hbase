@@ -10,9 +10,9 @@ This Vagrant project sets up a Ubuntu 12.04 (precise) virtual machine and
 provisions it for HBase development. [Ansible](http://www.ansibleworks.com/)
 is used for VM provisioning.
 
-After running `vagrant up`, a single HBase node is set up in standalone mode
-(using local file system, not HDFS). A Thrift server is also running,
-allowing access from languages outside of the JVM.
+After running `vagrant up`, a single HBase node is set up in pseudo-distributed
+mode, running on a single-node Hadoop HDFS filesystem. A Thrift server is also
+running, allowing access from languages outside of the JVM.
 
 Getting started
 ---------------
