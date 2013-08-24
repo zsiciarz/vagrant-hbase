@@ -4,6 +4,9 @@
   sudo: yes
 
   vars:
+    - hadoop_release: hadoop-1.2.1
+    - hadoop_archive: '{{ hadoop_release }}.tar.gz'
+    - hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
     - hbase_release: hbase-0.94.9
     - hbase_archive: '{{ hbase_release }}.tar.gz'
     - hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
@@ -43,6 +46,16 @@
 
     - name: fix /etc/hosts
       lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1\s+(.*)$' line='127.0.0.1 \1' backrefs=yes state=present
+
+    ### Hadoop
+
+    - name: download Hadoop relase {{ hadoop_release }}
+      get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/stable/{{ hadoop_archive }}' dest='/home/vagrant/{{ hadoop_archive }}'
+
+    - name: extract Hadoop archive
+      command: tar xzf '/home/vagrant/{{ hadoop_archive }}' creates='{{ hadoop_home_dir }}'
+
+    ### HBase
 
     - name: download HBase release {{ hbase_release }}
       get_url: url='http://ftp.ps.pl/pub/apache/hbase/stable/{{ hbase_archive }}' dest='/home/vagrant/{{ hbase_archive }}'
