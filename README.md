@@ -1,14 +1,14 @@
 vagrant-hbase
 =============
 
-Vagrantfile for quick-and-dirty HBase setup.
+A Vagrantfile to get up and running with Hadoop and HBase development.
 
 Overview
 --------
 
-This Vagrant project sets up a Ubuntu 12.04 (precise) virtual machine and
-provisions it for HBase development. [Ansible](http://www.ansibleworks.com/)
-is used for VM provisioning.
+The aim of this project is to set up a virtual machine ready for Hadoop and HBase
+development in just a few minutes. The VM is a Ubuntu 12.04 (precise) box,
+which is provisioned with [Ansible](http://www.ansibleworks.com/).
 
 After running `vagrant up`, a single HBase node is set up in pseudo-distributed
 mode, running on a single-node Hadoop HDFS filesystem. A Thrift server is also
