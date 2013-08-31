@@ -55,8 +55,12 @@ a dead simple test table with one column family `cf`. The table looks like this:
 
     +--------+-----------+
     | rowkey |  cf:col1  |
-    +--------+-----------+
+    +========+===========+
     |  row1  |   value1  |
+    +--------+-----------+
+    |  row2  |   value2  |
+    +--------+-----------+
+    |  row3  |   value3  |
     +--------+-----------+
 
 To load the data, execute:
