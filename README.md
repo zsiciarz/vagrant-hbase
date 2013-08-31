@@ -113,7 +113,7 @@ initial data were loaded):
 Author
 ------
 
- * Zbigniew Siciarz (zbigniew at siciarz dot net)
+ * [Zbigniew Siciarz](http://siciarz.net) (zbigniew at siciarz dot net)
 
 License
 -------
