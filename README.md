@@ -53,15 +53,15 @@ Initial data
 The `create_test_table.rb` file can be loaded into HBase shell to define
 a dead simple test table with one column family `cf`. The table looks like this:
 
-    +--------+-----------+
-    | rowkey |  cf:col1  |
-    +========+===========+
+    +--------+-----------+-----------+
+    | rowkey |  cf:col1  |  cf:col2  |
+    +========+===========+===========+
     |  row1  |   value1  |
     +--------+-----------+
     |  row2  |   value2  |
-    +--------+-----------+
-    |  row3  |   value3  |
-    +--------+-----------+
+    +--------+-----------+-----------+
+    |  row3  |           |   value3  |
+    +--------+           +-----------+
 
 To load the data, execute:
 
