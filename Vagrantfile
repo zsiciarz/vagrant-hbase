@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/playbook.yml"
-    ansible.inventory_file = "ansible/ansible_hosts"
+    ansible.inventory_path = "ansible/ansible_hosts"
     ansible.verbose = true
   end
 end
