@@ -17,14 +17,10 @@ running, allowing access from languages outside of the JVM.
 Getting started
 ---------------
 
-1. install Ansible on your host machine
+1. install Ansible 1.3 or newer on your host machine
 2. `git clone https://github.com/zsiciarz/vagrant-hbase.git && cd vagrant-hbase && vagrant up`
 3. ????
 4. PROFIT!
-
-**Note:** Ansible < 1.2 may not work due to some bugs in parsing Jinja2 syntax
-in playbooks. Ubuntu 13.04 has only Ansible 1.1 in repositories, therefore
-it's best to use `sudo pip install ansible` to get a more recent version.
 
 Network and ports
 -----------------
