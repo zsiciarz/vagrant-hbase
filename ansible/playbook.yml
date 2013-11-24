@@ -10,7 +10,7 @@
     - hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
     - hadoop_tmp_dir: '/data/hadoop'
     - hadoop_fs_default_name: 'hdfs://localhost:54310'
-    - hbase_release: hbase-0.94.11
+    - hbase_release: hbase-0.94.13
     - hbase_archive: '{{ hbase_release }}.tar.gz'
     - hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
     - hbase_data_dir: /data/hbase
@@ -99,7 +99,7 @@
     ### HBase
 
     - name: download HBase release {{ hbase_release }}
-      get_url: url='http://ftp.ps.pl/pub/apache/hbase/stable/{{ hbase_archive }}' dest='/home/vagrant/{{ hbase_archive }}'
+      get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}' dest='/home/vagrant/{{ hbase_archive }}'
 
     - name: create HBase-related directories
       file: path='{{ item }}' state=directory
