@@ -73,7 +73,7 @@
     ### Hadoop
 
     - name: download Hadoop relase {{ hadoop_release }}
-      get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/stable/{{ hadoop_archive }}' dest='/home/vagrant/{{ hadoop_archive }}'
+      get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}' dest='/home/vagrant/{{ hadoop_archive }}'
 
     - name: extract Hadoop archive
       command: tar xzf '/home/vagrant/{{ hadoop_archive }}' creates='{{ hadoop_home_dir }}'
