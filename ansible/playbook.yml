@@ -121,3 +121,5 @@
 
     - name: start Thrift server
       shell: '{{ hbase_home_dir }}/bin/hbase-daemon.sh start thrift'
+
+# vim: ft=ansible
