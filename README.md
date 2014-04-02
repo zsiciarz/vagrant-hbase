@@ -17,7 +17,7 @@ running, allowing access from languages outside of the JVM.
 Getting started
 ---------------
 
-1. install Ansible 1.3 or newer on your host machine
+1. install Ansible 1.4 or newer on your host machine
 2. `git clone https://github.com/zsiciarz/vagrant-hbase.git && cd vagrant-hbase && vagrant up`
 3. ????
 4. PROFIT!
