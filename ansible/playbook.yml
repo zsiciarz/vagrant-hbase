@@ -10,7 +10,7 @@
     - hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
     - hadoop_tmp_dir: '/data/hadoop'
     - hadoop_fs_default_name: 'hdfs://localhost:54310'
-    - hbase_release: hbase-0.94.17
+    - hbase_release: hbase-0.94.18
     - hbase_archive: '{{ hbase_release }}.tar.gz'
     - hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
     - hbase_data_dir: /data/hbase
