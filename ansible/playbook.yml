@@ -126,5 +126,7 @@
 
     - name: start Thrift server
       shell: '{{ hbase_home_dir }}/bin/hbase-daemon.sh start thrift'
+      register: thrift_start
+      changed_when: thrift_start.stdout.find('starting thrift') == -1
 
 # vim: ft=ansible
