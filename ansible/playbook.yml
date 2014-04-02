@@ -41,7 +41,7 @@
       sudo: yes
 
     - name: automatically accept Java license
-      shell: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+      shell: 'echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections'
       sudo: yes
 
     - name: install Java 7
