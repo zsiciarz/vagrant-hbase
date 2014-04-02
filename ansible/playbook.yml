@@ -1,7 +1,6 @@
 ---
 - hosts: vagrant
-  connection: ssh
-  user: vagrant
+  remote_user: vagrant
 
   vars:
     - ssh_key: /home/vagrant/.ssh/id_rsa
