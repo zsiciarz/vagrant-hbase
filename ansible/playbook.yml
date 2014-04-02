@@ -121,6 +121,8 @@
 
     - name: start HBase
       command: '{{ hbase_home_dir }}/bin/start-hbase.sh'
+      register: hbase_start
+      changed_when: hbase_start.stdout.find('starting master') == -1
 
     - name: start Thrift server
       shell: '{{ hbase_home_dir }}/bin/hbase-daemon.sh start thrift'
