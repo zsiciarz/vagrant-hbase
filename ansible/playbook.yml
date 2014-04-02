@@ -57,7 +57,7 @@
       sudo: yes
 
     - name: create base data directory
-      file: path=/data state=directory owner=vagrant group=vagrant mode=0755 recurse=yes
+      file: path=/data state=directory owner=vagrant group=vagrant mode=0755
       sudo: yes
 
     - name: create SSH config
