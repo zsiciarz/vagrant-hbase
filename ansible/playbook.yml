@@ -96,6 +96,8 @@
 
     - name: start Hadoop DFS daemons
       command: '{{ hadoop_home_dir }}/bin/start-dfs.sh'
+      register: hadoop_start
+      changed_when: hadoop_start.stdout.find('starting datanode') == -1
 
     ### HBase
 
