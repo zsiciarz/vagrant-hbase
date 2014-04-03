@@ -119,6 +119,9 @@
     - name: set JAVA_HOME environment variable for HBase
       lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh' regexp='^#?\s*export JAVA_HOME=(.*)$' line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre' state=present
 
+    - name: explicitly tell HBase to manage Zookeeper
+      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh' regexp='^#?\s*export HBASE_MANAGES_ZK(.*)$' line='export HBASE_MANAGES_ZK=true' state=present
+
     - name: start HBase
       command: '{{ hbase_home_dir }}/bin/start-hbase.sh'
       register: hbase_start
