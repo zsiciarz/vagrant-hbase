@@ -53,7 +53,11 @@
       sudo: yes
 
     - name: fix /etc/hosts
-      lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1\s+(.*)$' line='127.0.0.1 \1' backrefs=yes state=present
+      lineinfile: dest=/etc/hosts
+                  regexp='^127\.0\.1\.1\s+(.*)$'
+                  line='127.0.0.1 \1'
+                  backrefs=yes
+                  state=present
       sudo: yes
 
     - name: create base data directory
@@ -64,7 +68,8 @@
       template: src=templates/ssh-config.j2 dest=/home/vagrant/.ssh/config
 
     - name: create SSH key pair for Hadoop
-      command: creates='{{ ssh_key }}.pub' ssh-keygen -t rsa -N "" -C "for Hadoop" -f '{{ ssh_key }}'
+      command: ssh-keygen -t rsa -N "" -C "for Hadoop" -f '{{ ssh_key }}'
+               creates='{{ ssh_key }}.pub'
 
     - name: add generated key to authorized_keys
       shell: 'if grep -q Hadoop /home/vagrant/.ssh/authorized_keys; then echo "public key already added"; else cat {{ ssh_key }}.pub >> /home/vagrant/.ssh/authorized_keys; fi'
@@ -74,22 +79,32 @@
     ### Hadoop
 
     - name: download Hadoop relase {{ hadoop_release }}
-      get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}' dest='/home/vagrant/{{ hadoop_archive }}'
+      get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}'
+               dest='/home/vagrant/{{ hadoop_archive }}'
 
     - name: extract Hadoop archive
-      command: tar xzf '/home/vagrant/{{ hadoop_archive }}' creates='{{ hadoop_home_dir }}'
+      command: tar xzf '/home/vagrant/{{ hadoop_archive }}'
+               creates='{{ hadoop_home_dir }}'
 
     - name: set JAVA_HOME environment variable for Hadoop
-      lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh' regexp='^#?\s*export JAVA_HOME=(.*)$' line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre' state=present
+      lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh'
+                  regexp='^#?\s*export JAVA_HOME=(.*)$'
+                  line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre'
+                  state=present
 
     - name: set additional JVM options for Hadoop
-      lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh' regexp='^#?\s*export HADOOP_OPTS=(.*)$' line='export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true' state=present
+      lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh'
+                  regexp='^#?\s*export HADOOP_OPTS=(.*)$'
+                  line='export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true'
+                  state=present
 
     - name: write Hadoop core config file
-      template: src=templates/hadoop-core-site.xml.j2 dest='{{ hadoop_home_dir }}/conf/core-site.xml'
+      template: src=templates/hadoop-core-site.xml.j2
+                dest='{{ hadoop_home_dir }}/conf/core-site.xml'
 
     - name: write Hadoop HDFS config file
-      template: src=templates/hadoop-hdfs-site.xml.j2 dest='{{ hadoop_home_dir }}/conf/hdfs-site.xml'
+      template: src=templates/hadoop-hdfs-site.xml.j2
+                dest='{{ hadoop_home_dir }}/conf/hdfs-site.xml'
 
     - name: format the Hadoop filesystem
       command: creates='{{ hadoop_tmp_dir }}' '{{ hadoop_home_dir }}/bin/hadoop' namenode -format
@@ -102,7 +117,8 @@
     ### HBase
 
     - name: download HBase release {{ hbase_release }}
-      get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}' dest='/home/vagrant/{{ hbase_archive }}'
+      get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
+               dest='/home/vagrant/{{ hbase_archive }}'
 
     - name: create HBase-related directories
       file: path='{{ item }}' state=directory
@@ -111,16 +127,24 @@
         - '{{ zookeeper_data_dir }}'
 
     - name: extract HBase archive
-      command: tar xzf '/home/vagrant/{{ hbase_archive }}' creates='{{ hbase_home_dir }}'
+      command: tar xzf '/home/vagrant/{{ hbase_archive }}'
+               creates='{{ hbase_home_dir }}'
 
     - name: write HBase config file
-      template: src=templates/hbase-site.xml.j2 dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
+      template: src=templates/hbase-site.xml.j2
+                dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
 
     - name: set JAVA_HOME environment variable for HBase
-      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh' regexp='^#?\s*export JAVA_HOME=(.*)$' line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre' state=present
+      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh'
+                  regexp='^#?\s*export JAVA_HOME=(.*)$'
+                  line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre'
+                  state=present
 
     - name: explicitly tell HBase to manage Zookeeper
-      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh' regexp='^#?\s*export HBASE_MANAGES_ZK(.*)$' line='export HBASE_MANAGES_ZK=true' state=present
+      lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh'
+                  regexp='^#?\s*export HBASE_MANAGES_ZK(.*)$'
+                  line='export HBASE_MANAGES_ZK=true'
+                  state=present
 
     - name: start HBase
       command: '{{ hbase_home_dir }}/bin/start-hbase.sh'
