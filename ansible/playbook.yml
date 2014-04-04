@@ -112,7 +112,8 @@
                creates={{ hadoop_tmp_dir }}
 
     - name: start Hadoop DFS daemons
-      command: '{{ hadoop_home_dir }}/bin/start-dfs.sh'
+      command: ./bin/start-dfs.sh
+               chdir={{ hadoop_home_dir }}
       register: hadoop_start
       changed_when: hadoop_start.stdout.find('starting datanode') == -1
 
