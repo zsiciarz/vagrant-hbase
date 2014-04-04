@@ -107,7 +107,9 @@
                 dest='{{ hadoop_home_dir }}/conf/hdfs-site.xml'
 
     - name: format the Hadoop filesystem
-      command: creates='{{ hadoop_tmp_dir }}' '{{ hadoop_home_dir }}/bin/hadoop' namenode -format
+      command: ./bin/hadoop namenode -format
+               chdir={{ hadoop_home_dir }}
+               creates={{ hadoop_tmp_dir }}
 
     - name: start Hadoop DFS daemons
       command: '{{ hadoop_home_dir }}/bin/start-dfs.sh'
