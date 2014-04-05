@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
   if is_windows
     # Provisioning configuration for shell script.
     config.vm.provision "shell" do |sh|
+      sh.privileged = false
       sh.path = "windows/windows.sh"
       sh.args = "ansible/playbook.yml ansible/ansible_hosts"
     end
