@@ -98,13 +98,13 @@
 
     - name: set JAVA_HOME environment variable for Hadoop
       lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh'
-                  regexp='^#?\s*export JAVA_HOME=(.*)$'
+                  regexp='^#?\s*export JAVA_HOME='
                   line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre'
                   state=present
 
     - name: set additional JVM options for Hadoop
       lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh'
-                  regexp='^#?\s*export HADOOP_OPTS=(.*)$'
+                  regexp='^#?\s*export HADOOP_OPTS='
                   line='export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true'
                   state=present
 
@@ -149,13 +149,13 @@
 
     - name: set JAVA_HOME environment variable for HBase
       lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh'
-                  regexp='^#?\s*export JAVA_HOME=(.*)$'
+                  regexp='^#?\s*export JAVA_HOME='
                   line='export JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre'
                   state=present
 
     - name: explicitly tell HBase to manage Zookeeper
       lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh'
-                  regexp='^#?\s*export HBASE_MANAGES_ZK(.*)$'
+                  regexp='^#?\s*export HBASE_MANAGES_ZK='
                   line='export HBASE_MANAGES_ZK=true'
                   state=present
 
