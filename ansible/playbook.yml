@@ -94,6 +94,7 @@
 
     - name: extract Hadoop archive
       command: tar xzf '/home/vagrant/{{ hadoop_archive }}'
+               chdir=/home/vagrant/
                creates='{{ hadoop_home_dir }}'
 
     - name: set JAVA_HOME environment variable for Hadoop
@@ -141,6 +142,7 @@
 
     - name: extract HBase archive
       command: tar xzf '/home/vagrant/{{ hbase_archive }}'
+               chdir=/home/vagrant/
                creates='{{ hbase_home_dir }}'
 
     - name: write HBase config file
