@@ -9,6 +9,9 @@
            chdir=/home/vagrant/
            creates='{{ hadoop_home_dir }}'
 
+- name: symlink Hadoop home directory to just hadoop/
+  file: path=/home/vagrant/hadoop src='{{ hadoop_home_dir }}' state=link
+
 - name: set JAVA_HOME environment variable for Hadoop
   lineinfile: dest='{{ hadoop_home_dir }}/conf/hadoop-env.sh'
               regexp='^#?\s*export JAVA_HOME='
