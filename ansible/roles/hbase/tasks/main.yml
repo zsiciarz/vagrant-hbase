@@ -15,6 +15,9 @@
            chdir=/home/vagrant/
            creates='{{ hbase_home_dir }}'
 
+- name: symlink HBase home directory to just hbase/
+  file: path=/home/vagrant/hbase src='{{ hbase_home_dir }}' state=link
+
 - name: write HBase config file
   template: src=hbase-site.xml.j2
             dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
