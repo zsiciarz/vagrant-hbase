@@ -1,4 +1,5 @@
 ---
+hadoop_major_version: 1
 hadoop_release: hadoop-1.2.1
 hadoop_archive: '{{ hadoop_release }}.tar.gz'
 hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
