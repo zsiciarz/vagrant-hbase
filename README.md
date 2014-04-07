@@ -37,7 +37,10 @@ Hadoop
 ------
 
 Hadoop 2 is installed by default. If you wish to use version 1, replace
-`hadoop2` role with `hadoop` in `playbook.yml`.
+`hadoop2` role with `hadoop` in `playbook.yml`. HBase works on both versions
+since release 0.96. However switching between Hadoop versions won't work; you
+need to `vagrant destroy` the VM, change role in `playbook.yml` and start
+from scratch.
 
 If the following commands work, Hadoop is successfully running.
 
