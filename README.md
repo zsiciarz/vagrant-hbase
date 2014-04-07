@@ -46,8 +46,10 @@ If the following commands work, Hadoop is successfully running.
 
     vagrant ssh
     cd hadoop/
-    echo 'Hello world!' | ./bin/hadoop fs -put - hello.txt
-    ./bin/hadoop fs -cat /user/vagrant/hello.txt
+    echo 'Hello world!' | ./bin/hadoop dfs -put - hello.txt
+    ./bin/hadoop dfs -cat /user/vagrant/hello.txt
+
+(Replace `hadoop dfs` with `hadoop fs` if you switched to Hadoop 1.)
 
 Initial data
 ------------
