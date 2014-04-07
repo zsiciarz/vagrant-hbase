@@ -1,6 +1,7 @@
 ---
 hbase_release: hbase-0.96.2
 hbase_archive: '{{ hbase_release }}-hadoop{{ hadoop_major_version }}-bin.tar.gz'
+hbase_sha256: '6c305f1b1f08067ccfecbc756aff19330856eb12fdd4a25999e32cdc6943a6df'
 hbase_home_dir: '/home/vagrant/{{ hbase_release }}-hadoop{{ hadoop_major_version }}'
 hbase_data_dir: /data/hbase
 zookeeper_data_dir: /data/zk

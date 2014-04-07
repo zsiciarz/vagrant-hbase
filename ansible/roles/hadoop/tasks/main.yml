@@ -2,7 +2,7 @@
 - name: download Hadoop relase {{ hadoop_release }}
   get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}'
            dest='/home/vagrant/{{ hadoop_archive }}'
-           sha256sum='94a1181771f173bdb55c8f901722825866396091f0516bdd12b34dc3de1706a1'
+           sha256sum='{{ hadoop_sha256 }}'
 
 - name: extract Hadoop archive
   command: tar xzf '/home/vagrant/{{ hadoop_archive }}'

@@ -2,7 +2,7 @@
 - name: download HBase release {{ hbase_release }}
   get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
            dest='/home/vagrant/{{ hbase_archive }}'
-           sha256sum='6c305f1b1f08067ccfecbc756aff19330856eb12fdd4a25999e32cdc6943a6df'
+           sha256sum='{{ hbase_sha256 }}'
 
 - name: create HBase-related directories
   file: path='{{ item }}' state=directory
