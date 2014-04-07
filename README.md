@@ -36,6 +36,9 @@ http://127.0.0.1:60110 (Master) and http://127.0.0.1:60130 (RegionServer).
 Hadoop
 ------
 
+Hadoop 2 is installed by default. If you wish to use version 1, replace
+`hadoop2` role with `hadoop` in `playbook.yml`.
+
 If the following commands work, Hadoop is successfully running.
 
     vagrant ssh
