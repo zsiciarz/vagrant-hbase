@@ -36,20 +36,13 @@ http://127.0.0.1:60110 (Master) and http://127.0.0.1:60130 (RegionServer).
 Hadoop
 ------
 
-Hadoop 2 is installed by default. If you wish to use version 1, replace
-`hadoop2` role with `hadoop` in `playbook.yml`. HBase works on both versions
-since release 0.96. However switching between Hadoop versions won't work; you
-need to `vagrant destroy` the VM, change role in `playbook.yml` and start
-from scratch.
-
-If the following commands work, Hadoop is successfully running.
+Hadoop 2 is installed by default. If the following commands work, Hadoop is
+successfully running.
 
     vagrant ssh
     cd hadoop/
-    echo 'Hello world!' | ./bin/hadoop dfs -put - hello.txt
-    ./bin/hadoop dfs -cat /user/vagrant/hello.txt
-
-(Replace `hadoop dfs` with `hadoop fs` if you switched to Hadoop 1.)
+    echo 'Hello world!' | ./bin/hadoop fs -put - hello.txt
+    ./bin/hadoop fs -cat /user/vagrant/hello.txt
 
 Initial data
 ------------
