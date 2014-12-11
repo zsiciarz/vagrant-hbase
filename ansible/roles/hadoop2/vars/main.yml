@@ -1,8 +1,8 @@
 ---
 hadoop_major_version: 2
-hadoop_release: hadoop-2.3.0
+hadoop_release: hadoop-2.6.0
 hadoop_archive: '{{ hadoop_release }}.tar.gz'
-hadoop_sha256: '3fad58b525a47cf74458d0996564a2151c5a28baa1f92383e7932774deef5023'
+hadoop_sha256: '7a2ef6e7f468afcae95d0f7214816033c7e5c7982454061ccb117896d58d279f'
 hadoop_home_dir: '/home/vagrant/{{ hadoop_release }}'
 hadoop_tmp_dir: '/data/hadoop'
 hadoop_fs_default_name: 'hdfs://localhost:54310'
