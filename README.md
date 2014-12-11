@@ -7,7 +7,7 @@ Overview
 --------
 
 The aim of this project is to set up a virtual machine ready for Hadoop and HBase
-development in just a few minutes. The VM is a Ubuntu 12.04 (precise) box,
+development in just a few minutes. The VM is a Ubuntu 14.04 (trusty) box,
 which is provisioned with [Ansible](http://www.ansibleworks.com/).
 
 After running `vagrant up`, a single HBase node is set up in pseudo-distributed
