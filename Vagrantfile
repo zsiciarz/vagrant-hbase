@@ -20,6 +20,8 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 60030, host: 60130
   # Thrift
   config.vm.network :forwarded_port, guest: 9090, host: 9190
+  #ZooKeeper
+  config.vm.network :forwarded_port, guest: 2181, host: 2281
 
   config.ssh.forward_agent = true
 
