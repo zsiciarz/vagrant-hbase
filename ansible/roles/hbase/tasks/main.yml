@@ -1,15 +1,8 @@
 ---
-- name: download HBase release {{ hbase_release }} (for Hadoop 1)
+- name: download HBase release {{ hbase_release }}
   get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
            dest='/home/vagrant/{{ hbase_archive }}'
-           sha256sum='{{ hbase_hadoop1_sha256 }}'
-  when: hadoop_major_version == 1
-
-- name: download HBase release {{ hbase_release }} (for Hadoop 2)
-  get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
-           dest='/home/vagrant/{{ hbase_archive }}'
-           sha256sum='{{ hbase_hadoop2_sha256 }}'
-  when: hadoop_major_version == 2
+           sha256sum='{{ hbase_sha256 }}'
 
 - name: create HBase-related directories
   file: path='{{ item }}' state=directory

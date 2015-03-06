@@ -1,8 +1,7 @@
 ---
-hbase_release: hbase-0.98.9
-hbase_archive: '{{ hbase_release }}-hadoop{{ hadoop_major_version }}-bin.tar.gz'
-hbase_hadoop1_sha256: 'f99ae326b44d05d0cbcaccab0ac12cafbfcbc6140e023cda1d6b9fbc4e13d385'
-hbase_hadoop2_sha256: 'bd8eebba16bf05b2e4ce5caca1a48a4609d4e18756396ffac50dfd79badebbb4'
-hbase_home_dir: '/home/vagrant/{{ hbase_release }}-hadoop{{ hadoop_major_version }}'
+hbase_release: hbase-1.0.0
+hbase_archive: '{{ hbase_release }}-bin.tar.gz'
+hbase_sha256: '9bf5dc7c2c85ab50c4c2aa4e7b03889c9c816fd0c695fba10918044067a0f7dc'
+hbase_home_dir: '/home/vagrant/{{ hbase_release }}'
 hbase_data_dir: /data/hbase
 zookeeper_data_dir: /data/zk
