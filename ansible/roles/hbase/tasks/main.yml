@@ -1,6 +1,6 @@
 ---
 - name: download HBase release {{ hbase_release }}
-  get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
+  get_url: url='http://archive.apache.org/dist/hbase/{{ hbase_release }}/{{ hbase_archive }}'
            dest='/home/vagrant/{{ hbase_archive }}'
            sha256sum='{{ hbase_sha256 }}'
 
