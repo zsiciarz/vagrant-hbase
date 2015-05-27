@@ -42,3 +42,4 @@
            chdir={{ hadoop_home_dir }}
   register: hadoop_start
   changed_when: hadoop_start.stdout.find('starting datanode') == -1
+                and 'Stop it first' not in hadoop_start.stdout

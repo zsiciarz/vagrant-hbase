@@ -38,10 +38,11 @@
   command: ./bin/start-hbase.sh
            chdir={{ hbase_home_dir }}
   register: hbase_start
-  changed_when: hbase_start.stdout.find('starting master') == -1
+  changed_when: "'starting master' in hbase_start.stdout"
 
 - name: start Thrift server
   command: ./bin/hbase-daemon.sh start thrift
            chdir={{ hbase_home_dir }}
   register: thrift_start
-  changed_when: thrift_start.stdout.find('starting thrift') == -1
+  changed_when: "'starting thrift' in thrift_start.stdout"
+  failed_when: thrift_start.rc != 0 and 'thrift running as process' not in thrift_start.stdout
