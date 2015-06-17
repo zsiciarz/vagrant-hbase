@@ -1,6 +1,6 @@
 ---
 - name: download Hadoop release {{ hadoop_release }}
-  get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}'
+  get_url: url='http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.5.0-cdh5.3.3.tar.gz'
            dest='/home/vagrant/{{ hadoop_archive }}'
            sha256sum='{{ hadoop_sha256 }}'
 

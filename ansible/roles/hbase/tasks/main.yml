@@ -1,6 +1,6 @@
 ---
 - name: download HBase release {{ hbase_release }}
-  get_url: url='http://ftp.ps.pl/pub/apache/hbase/{{ hbase_release }}/{{ hbase_archive }}'
+  get_url: url='http://archive.cloudera.com/cdh5/cdh/5/hbase-0.98.6-cdh5.3.3.tar.gz'
            dest='/home/vagrant/{{ hbase_archive }}'
            sha256sum='{{ hbase_sha256 }}'
 
