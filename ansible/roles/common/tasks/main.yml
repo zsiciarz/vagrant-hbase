@@ -45,6 +45,10 @@
     - jython
   sudo: yes
 
+- name: create hosts file that resolves vagrant-hbase to the external IP
+  template: src=hosts.j2 dest=/etc/hosts
+  sudo: yes
+
 - name: fix /etc/hosts
   lineinfile: dest=/etc/hosts
               regexp='^127\.0\.1\.1\s+(.*)$'
@@ -68,3 +72,7 @@
   shell: 'if grep -q Hadoop /home/vagrant/.ssh/authorized_keys; then echo "public key already added"; else cat {{ ssh_key }}.pub >> /home/vagrant/.ssh/authorized_keys; fi'
   register: ssh_result
   changed_when: ssh_result.stdout.find('public key already added') == -1
+
+- name: Sync the system clock
+  shell: 'ntpdate pool.ntp.org'
+  sudo: yes

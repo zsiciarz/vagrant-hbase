@@ -1,6 +1,6 @@
 ---
 - name: download Hadoop release {{ hadoop_release }}
-  get_url: url='http://ftp.ps.pl/pub/apache/hadoop/core/{{ hadoop_release }}/{{ hadoop_archive }}'
+  get_url: url='http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.5.0-cdh5.3.3.tar.gz'
            dest='/home/vagrant/{{ hadoop_archive }}'
            sha256sum='{{ hadoop_sha256 }}'
 
@@ -27,6 +27,10 @@
 - name: write Hadoop core config file
   template: src=hadoop-core-site.xml.j2
             dest='{{ hadoop_home_dir }}/etc/hadoop/core-site.xml'
+
+- name: write Hadoop MapRed config file
+  template: src=hadoop-mapred-site.xml.j2
+            dest='{{ hadoop_home_dir }}/etc/hadoop/mapred-site.xml'
 
 - name: write Hadoop HDFS config file
   template: src=hadoop-hdfs-site.xml.j2
