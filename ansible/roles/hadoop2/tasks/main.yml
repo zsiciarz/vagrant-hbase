@@ -28,6 +28,10 @@
   template: src=hadoop-core-site.xml.j2
             dest='{{ hadoop_home_dir }}/etc/hadoop/core-site.xml'
 
+- name: write Hadoop MapRed config file
+  template: src=hadoop-mapred-site.xml.j2
+            dest='{{ hadoop_home_dir }}/etc/hadoop/mapred-site.xml'
+
 - name: write Hadoop HDFS config file
   template: src=hadoop-hdfs-site.xml.j2
             dest='{{ hadoop_home_dir }}/etc/hadoop/hdfs-site.xml'

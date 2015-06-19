@@ -10,11 +10,24 @@
         <value>true</value>
     </property>
     <property>
+        <name>hbase.master</name>
+        <value>vagrant-hbase</value>
+    </property>
+    <property>
         <name>hbase.zookeeper.quorum</name>
-        <value>localhost</value>
+        <value>vagrant-hbase</value>
     </property>
     <property>
         <name>hbase.zookeeper.property.dataDir</name>
         <value>{{ zookeeper_data_dir }}</value>
+    </property>
+    <property>
+        <name>hbase.master.ipc.address</name>
+        <value>0.0.0.0</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.ipc.address</name>
+        <value>0.0.0.0</value>
     </property>
 </configuration>
