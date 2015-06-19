@@ -45,6 +45,10 @@
     - jython
   sudo: yes
 
+- name: create hosts file that resolves vagrant-hbase to the external IP
+  template: src=hosts.j2 dest=/etc/hosts
+  sudo: yes
+
 - name: fix /etc/hosts
   lineinfile: dest=/etc/hosts
               regexp='^127\.0\.1\.1\s+(.*)$'

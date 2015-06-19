@@ -22,6 +22,10 @@
   template: src=hbase-site.xml.j2
             dest='{{ hbase_home_dir }}/conf/hbase-site.xml'
 
+- name: Make sure HBase regionservers file doesn't contain 'localhost'
+  template: src=regionservers.j2
+            dest='{{ hbase_home_dir }}/conf/regionservers'
+
 - name: set JAVA_HOME environment variable for HBase
   lineinfile: dest='{{ hbase_home_dir }}/conf/hbase-env.sh'
               regexp='^#?\s*export JAVA_HOME='
